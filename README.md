@@ -11,8 +11,6 @@ Because radiometric satellite measurements are most likely to be made available 
 
 In sequence the inputs necessary for for the main function 'MW_algorithm_sat.m' are the satellite band specific signal-to-noise (SNR) and bandwidhts, also the ranges of shape parameters (S and Y) and the mass-specific coefficientes (a_nap at 443 nm, a_nap at 750 nm, and b_bp at 700 nm), the water temperature corresponding to when RW was measured, and the saturation threshold og choice (Q_filter)
 
-The 'MW_algorithm_sat.m' function will run in two steps: the first step estimating SPM and uncertaintyes and the second step constraining shape parameter and mass-specific coefficients.
-
 # Questions and Suggestions
 
-For questions regarding the script implementation or to suggest changes to improve its functionality, please contact Juliana Tavora at juliana.tavora@maine.edu
+For questions regarding the script implementation or to suggest changes to improve its functionality, please contact Juliana Tavora at juliana.tavora@maine.edu; j.tavora@utwente.nl
