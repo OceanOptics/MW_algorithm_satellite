@@ -29,16 +29,11 @@ function [SPM_mw, err_mw] = MW_algorithm(nm, std, rrs, U, ...
 %   1) 'asw_correction' Water absorption for temperature correction 
 %   2) 'weight_assess' for estimates of maximum uncertainties and
 %       establishing the weight used for final SPM and uncertainty estimates
-%   3) 'IOP_sel' constrains combinations of IOPs and returns a table with
-%   the 20 most common IOPs for each measurement
 %
 % OUTPUTS:
 %
 % SPM_mw    -  SPM estimates
 % err_mw    -  uncertainties associated with the method in gm^-3         
-% IOP_table -  table of the 20 most common combinations of IOPs. The
-%              following code line can be added to estimate median and ranges
-%              of IOP
 %
 % The SPM retrivals and uncertainties can be applied to ocean color 
 % remote sensing data such as Landsat8/OLI, MODIS/aqua and others. 
@@ -98,8 +93,8 @@ M = length(nm);
 % filtering results for saturation 
 W(SPM_model < 0 | Q < 0 | Q > Q_filter)=NaN;
 Q(SPM_model < 0 | Q < 0 | Q > Q_filter)=NaN;
-coefs_matrix(:, SPM_model < 0 | Q < 0 | Q > Q_filter) = NaN;
-shape_matrix(:, SPM_model < 0 | Q < 0 | Q > Q_filter) = NaN;
+%coefs_matrix(:, SPM_model < 0 | Q < 0 | Q > Q_filter) = NaN;
+%shape_matrix(:, SPM_model < 0 | Q < 0 | Q > Q_filter) = NaN;
 
 % ----------------------------------------------------------------------- %
 % SPM retrieval
