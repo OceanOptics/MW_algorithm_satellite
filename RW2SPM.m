@@ -42,9 +42,11 @@ std = []; % standard deviation of below water remote sensing reflectances
 nm  = []; % central wavelength of satellite bands 
 
 %% Water-leaving reflectance to below water remote sensing reflectance
-[U, rrs, nm] = RW2rrs(RW, nm, L);
-[SPM_mw, err_mw, IOP_table,SPM_max,SPM_min] = MW_algorithm_sat(nm, std, rrs, U, L, S, Y, a_nap443, bbp700, a_nap750, temp, Q_filter, SNR, bandwidth);
-
+[U, rrs, nm]           = RW2rrs(RW, nm, L);
+[IOP_matrix,a_sw,dim]  = gen_IOP_array(rrs, U, std, bandwidth, SNR, nm, temp, S, Y, ap443, ap750, bbp700);
+[SPM_mw, err_mw]       = MW_algorithm_sat(nm, std, rrs, U, IOP_mtrix, asw, Q_filter, SNR, dim, temp);
+        
+        
 %% OUTPUTS:
 
 %SPM_modeled:
@@ -52,13 +54,6 @@ SPM_mw;
 
 %SPM_uncertainty (in gm^-3):
 err_mw;
-
-% constrained shape paremeters and mass-specific coeffs: 
-IOP_S       = IOP_table(:,:,6);
-IOP_Y       = IOP_table(:,:,5);
-IOP_ap443   = IOP_table(:,:,3);
-IOP_ap750   = IOP_table(:,:,4);
-IOP_bbp700  = IOP_table(:,:,2);
 
 
 
